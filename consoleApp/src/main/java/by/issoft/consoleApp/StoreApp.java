@@ -9,5 +9,7 @@ public class StoreApp {
         Store store = new Store();
         RandomStorePopulator populator = new RandomStorePopulator(store);
         populator.fillStoreRandomly();
+        store.printAllCategoriesAndProducts();
     }
+
 }
