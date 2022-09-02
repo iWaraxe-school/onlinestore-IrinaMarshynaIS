@@ -11,6 +11,14 @@ public abstract class Category {
         this.name = name;
         this.productList = new ArrayList<>();
     }
+
+    public String getName() {
+        return name;
+    }
+    public void addProductToCategory(Product product){
+        productList.add(product);
+    }
+
     public void printAllProduct() {
         System.out.println(String.format("%s","________________________________________________________________________________________"));
         System.out.println("Category " + name + ".");
