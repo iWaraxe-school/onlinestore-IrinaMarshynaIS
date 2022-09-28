@@ -12,6 +12,7 @@
         <module>consoleApp</module>
         <module>domain</module>
         <module>store</module>
+        <module>XML</module>
     </modules>
 
     <properties>
