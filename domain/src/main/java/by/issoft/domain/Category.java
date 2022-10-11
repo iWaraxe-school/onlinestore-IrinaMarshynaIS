@@ -12,6 +12,9 @@ public abstract class Category {
         this.productList = new ArrayList<>();
     }
 
+    public List<Product> getProductList() {
+        return productList;
+    }
     public String getName() {
         return name;
     }

@@ -1,5 +1,7 @@
-package XMLparser;
+package by.issoft.store.XML;
 
+import by.issoft.store.XML.SortingTypes.SortCategory;
+import by.issoft.store.XML.SortingTypes.SortType;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -11,14 +13,13 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class XMLParser {
 
-    public static Map<String, String> configMap() {
-        Map<String, String> config = new LinkedHashMap<>();
+    public static Map<SortCategory, SortType> configMap() {
+        Map<SortCategory, SortType> config = new LinkedHashMap<>();
         String filename = "C:\\Users\\irinamarshyna\\IdeaProjects\\onlinestore-IrinaMarshynaIS\\store\\src\\main\\resources\\config.xml";
 
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -35,17 +36,18 @@ public class XMLParser {
         NodeList childNodes = node.getChildNodes();
         Element element;
         for (int i = 0; i < childNodes.getLength(); i++) {
-            if (childNodes.item(i).getNodeType()==Node.ELEMENT_NODE){
+            if (childNodes.item(i).getNodeType() == Node.ELEMENT_NODE) {
                 element = (Element) childNodes.item(i);
-                String key = element.getTagName();
-                String value = element.getTextContent();
-                config.put(key, value);  // из document передаем в Map
+                try {
+                    SortCategory key = SortCategory.getCategory(element.getTagName());
+                    SortType value = SortType.getCategory(element.getTextContent());
+                    config.put(key, value);  // из document передаем в Map
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+
             }
-
-
         }
-
-
         return config;
     }
 }

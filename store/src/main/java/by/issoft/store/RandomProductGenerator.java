@@ -6,7 +6,7 @@ public class RandomProductGenerator {
     private Faker faker = new Faker();
 
     public double generatePrice () {
-        return faker.number().randomDouble(2,0,100);
+        return faker.number().randomDouble(2,0,2);
     }
 
     public double generateRate () {
