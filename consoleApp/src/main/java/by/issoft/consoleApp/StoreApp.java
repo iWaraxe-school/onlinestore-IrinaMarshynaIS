@@ -11,6 +11,7 @@ public class StoreApp {
         populator.fillStoreRandomly();
         store.sortStore();
         store.printAllCategoriesAndProducts();
+        store.getTop5();
 
 
     }

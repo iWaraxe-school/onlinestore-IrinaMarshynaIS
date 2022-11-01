@@ -25,15 +25,15 @@ public class ProductComparator implements Comparator<Product> {
         product2 = o2;
         Set<Map.Entry<SortCategory, SortType>> entrySet = sortMap.entrySet();
         Iterator<Map.Entry<SortCategory, SortType>> iterator = entrySet.iterator();
-        return Sort(iterator);
+        return sort(iterator);
     }
 
-    private int Sort(Iterator<Map.Entry<SortCategory, SortType>> iterator) {
+    private int sort(Iterator<Map.Entry<SortCategory, SortType>> iterator) {
         int result = 0;
         if (iterator.hasNext()) {
             result = chooseSortMethod(iterator.next());
             if (result == 0) {
-                return Sort(iterator);
+                return sort(iterator);
             } else {
                 return result;
             }
