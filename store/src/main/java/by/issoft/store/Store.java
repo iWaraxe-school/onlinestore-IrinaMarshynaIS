@@ -20,15 +20,18 @@ public class Store {
 
     public void sortStore() {
         Comparator<Product> productComparator = new ProductComparator(XMLParser.configMap());
-        for (Category category : categoryList) {
-            category.getProductList().sort(productComparator);
-        }
+
+        productStream().sorted(productComparator)
+                .forEach(System.out::println);
+
     }
+
     public void printAllCategoriesAndProducts() {
         for (Category category : categoryList) {
             category.printAllProduct();
         }
     }
+
     public void getTop5() {
         System.out.println("_______________________________");
         System.out.println("TOP 5");
@@ -41,11 +44,11 @@ public class Store {
         productStream().sorted(productComparator)
                 .limit(5)
                 .forEach(System.out::println);
-        }
+    }
 
-        private Stream<Product> productStream(){
+    private Stream<Product> productStream() {
         return categoryList.stream()
                 .map(Category::getProductList)
                 .flatMap(Collection::stream);
-        }
+    }
 }
