@@ -10,7 +10,7 @@ import java.io.InputStreamReader;
 public class StoreApp {
     public static void main(String[] args) {
 
-        Store store = new Store();
+        Store store = Store.getInstance();
         RandomStorePopulator populator = new RandomStorePopulator(store);
         populator.fillStoreRandomly();
         store.printAllCategoriesAndProducts();

@@ -10,7 +10,20 @@ import by.issoft.store.XML.Comparator.ProductComparator;
 import java.util.*;
 import java.util.stream.Stream;
 
-public class Store {
+public final class Store {
+    private static Store instance;
+
+    private Store() {
+
+    }
+
+    public static Store getInstance() {
+        if (instance == null) {
+            instance = new Store();
+        }
+        return instance;
+    }
+
 
     private List<Category> categoryList = new ArrayList<>();
 
