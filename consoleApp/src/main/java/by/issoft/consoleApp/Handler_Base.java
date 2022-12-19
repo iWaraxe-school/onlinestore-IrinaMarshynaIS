@@ -9,5 +9,6 @@ public abstract class Handler_Base implements Handler {
         return next;
     }
 
+    @Override
     public abstract void handleRequest(String input);
 }
