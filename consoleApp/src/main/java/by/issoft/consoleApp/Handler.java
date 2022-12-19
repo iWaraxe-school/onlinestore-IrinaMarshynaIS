@@ -2,8 +2,6 @@ package by.issoft.consoleApp;
 
 public interface Handler {
 
-    default void handleRequest() {
-
-    }
+    void handleRequest(String input);
 
 }
