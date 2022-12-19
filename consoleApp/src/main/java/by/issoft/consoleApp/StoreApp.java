@@ -14,29 +14,18 @@ public class StoreApp {
         RandomStorePopulator populator = new RandomStorePopulator(store);
         populator.fillStoreRandomly();
         store.printAllCategoriesAndProducts();
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        Boolean flag = true;
-        System.out.println("________________________________________________________________________________________");
-        System.out.println("---- Enter Top, Sort or Quit ----");
-        while (flag) {
-            try {
-                String command = reader.readLine();
-                switch (command) {
-                    case "Top":
-                        store.getTop5();
-                        break;
-                    case "Sort":
-                        store.sortStore();
-                        break;
-                    case "Quit":
-                        flag = false;
-                        break;
-                    default:
-                        System.out.println("---- Enter Top, Sort or Quit ----");
-                }
-            } catch (IOException e) {
-                throw new RuntimeException(e);
+        Handler_Top5 top5 = new Handler_Top5();
+
+        try {
+            BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+            while (true) {
+                System.out.println("________________________________________________________________________________________");
+                System.out.println("---- Enter Top5, Sort or Quit ----");
+                String input = reader.readLine();
+                top5.handleRequest(input);
             }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 }
