@@ -1,6 +1,7 @@
 package by.issoft.consoleApp;
 
 import by.issoft.store.RandomStorePopulator;
+import by.issoft.store.RandomStorePopulatorFactory;
 import by.issoft.store.Store;
 
 import java.io.BufferedReader;
@@ -11,7 +12,7 @@ public class StoreApp {
     public static void main(String[] args) {
 
         Store store = Store.getInstance();
-        RandomStorePopulator populator = new RandomStorePopulator(store);
+        RandomStorePopulatorFactory populator = new RandomStorePopulatorFactory(store);
         populator.fillStoreRandomly();
         store.printAllCategoriesAndProducts();
         Handler_Top5 top5 = new Handler_Top5();

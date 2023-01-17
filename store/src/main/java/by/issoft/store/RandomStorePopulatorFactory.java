@@ -9,10 +9,10 @@ import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
 
-public class RandomStorePopulator {
-    Store store;
+public class RandomStorePopulatorFactory {
+    static Store store;
 
-    public RandomStorePopulator(Store store) {
+    public RandomStorePopulatorFactory(Store store) {
         this.store = store;
     }
 
@@ -34,24 +34,18 @@ public class RandomStorePopulator {
 
     private static Set<Category> createCategorySet() {
         Set<Category> categorySet = new HashSet<>(); //задаем множество категорий
+        CategoryFactory categoryFactory = new CategoryFactory();
         Reflections reflections = new Reflections("by.issoft.domain.categories"); //создаем обьект reflection, кторый будет смотреть в тот пакет
         Set<Class<? extends Category>> subTypes = reflections.getSubTypesOf(Category.class);  // '?' any class.
 
+        System.out.println(subTypes);
         for (Class<? extends Category> subType : subTypes) {   //для каждого элемента множества классов создаем новый обьект (вызываем конструктор)
-
-            try {
-                Category category = subType.getConstructor().newInstance();
-                categorySet.add(category); //созданный обьект кладем во множество категорий
-            } catch (InstantiationException e) {
-                throw new RuntimeException(e);
-            } catch (IllegalAccessException e) {
-                throw new RuntimeException(e);
-            } catch (InvocationTargetException e) {
-                throw new RuntimeException(e);
-            } catch (NoSuchMethodException e) {
-                throw new RuntimeException(e);
-            }
+            String simpleName = subType.getSimpleName();
+            Category categoryToAdd = categoryFactory.getCategory(simpleName);
+            store.addCategoryToStore(categoryToAdd);
+            categorySet.add(categoryToAdd);
         }
+        System.out.println(categorySet);
         return categorySet; //возвращаем
     }
 }
