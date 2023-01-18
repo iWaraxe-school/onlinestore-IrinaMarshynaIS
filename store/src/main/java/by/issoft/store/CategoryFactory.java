@@ -12,16 +12,16 @@ import java.util.function.Supplier;
 
 public class CategoryFactory {
     public Category getCategory(String name) {
-        if (name.equals("Bikes")) {
+        if (name.equals("BikeCategory")) {
             return new BikeCategory();
         }
-        if (name.equals("Books")) {
+        if (name.equals("BookCategory")) {
             return new BookCategory();
         }
-        if (name.equals("Food")) {
+        if (name.equals("FoodCategory")) {
             return new FoodCategory();
         }
-        if (name.equals("Phones")) {
+        if (name.equals("PhoneCategory")) {
             return new PhoneCategory();
         }
         return null;
