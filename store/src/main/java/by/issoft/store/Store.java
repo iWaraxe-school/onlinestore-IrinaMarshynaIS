@@ -8,13 +8,13 @@ import by.issoft.domain.Product;
 import by.issoft.store.XML.Comparator.ProductComparator;
 
 import java.util.*;
+import java.util.concurrent.Callable;
 import java.util.stream.Stream;
 
 public final class Store {
     private static Store instance;
 
     private Store() {
-
     }
 
     public static Store getInstance() {
@@ -23,7 +23,6 @@ public final class Store {
         }
         return instance;
     }
-
 
     private List<Category> categoryList = new ArrayList<>();
 
@@ -36,7 +35,6 @@ public final class Store {
 
         productStream().sorted(productComparator)
                 .forEach(System.out::println);
-
     }
 
     public void printAllCategoriesAndProducts() {
@@ -57,6 +55,20 @@ public final class Store {
         productStream().sorted(productComparator)
                 .limit(5)
                 .forEach(System.out::println);
+    }
+
+    public List<Product> addProductToList() {
+        List<Product> allProducts = new ArrayList<>();
+        for (Category category : categoryList) {
+            allProducts.addAll(category.getProductList());
+        }
+        return allProducts;
+    }
+
+    public Product getRandomProductFromStore() {
+        Random random = new Random();
+        List<Product> allProducts = addProductToList();
+        return allProducts.get(random.nextInt(allProducts.size()));
     }
 
     private Stream<Product> productStream() {
