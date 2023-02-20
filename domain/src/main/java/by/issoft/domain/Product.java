@@ -11,6 +11,10 @@ public class Product {
         this.rate = rate;
     }
 
+    public Product() {
+
+    }
+
     public String getName() {
         return name;
     }

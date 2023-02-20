@@ -7,7 +7,7 @@ import java.util.logging.LogRecord;
 public class Handler_Sort extends Handler_Base {
 
     public Handler_Sort() {
-        super(new Handler_Quit());
+        super(new Handler_Order());
     }
     Store store = Store.getInstance();
 
