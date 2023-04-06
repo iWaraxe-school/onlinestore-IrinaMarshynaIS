@@ -32,7 +32,7 @@ public class RandomStorePopulator {
         }
     }
 
-    private static Set<Category> createCategorySet() {
+    public static Set<Category> createCategorySet() {
         Set<Category> categorySet = new HashSet<>(); //задаем множество категорий
         Reflections reflections = new Reflections("by.issoft.domain.categories"); //создаем обьект reflection, кторый будет смотреть в тот пакет
         Set<Class<? extends Category>> subTypes = reflections.getSubTypesOf(Category.class);  // '?' any class.

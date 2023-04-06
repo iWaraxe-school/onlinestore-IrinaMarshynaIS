@@ -14,7 +14,7 @@ import java.util.stream.Stream;
 public final class Store {
     private static Store instance;
 
-    private Store() {
+    public Store() {
     }
 
     public static Store getInstance() {
