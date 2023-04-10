@@ -11,18 +11,16 @@ import java.util.*;
 import java.util.concurrent.Callable;
 import java.util.stream.Stream;
 
-public final class Store {
-    private static Store instance;
+public class Store {
+    private static final Store instance = new Store();
 
     public Store() {
-    }
 
+    }
     public static Store getInstance() {
-        if (instance == null) {
-            instance = new Store();
-        }
         return instance;
     }
+
 
     private List<Category> categoryList = new ArrayList<>();
 
