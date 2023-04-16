@@ -10,18 +10,18 @@ import java.util.concurrent.ExecutionException;
 
 public class StoreApp {
     public static void main(String[] args) throws SQLException {
-        Store onlineStore = new Store();
-
+        Store onlineStore = Store.getInstance();
         RandomStorePopulator storePopulator = new RandomStorePopulator(onlineStore);
         storePopulator.fillStoreRandomly();
-        onlineStore.printAllCategoriesAndProducts();
+        //onlineStore.printAllCategoriesAndProducts();
 
         DBHelper dbHelper = new DBHelper(onlineStore);
-        dbHelper.dBinit();
-        //dbHelper.createCategoryTable();
-        //dbHelper.createProductTable();
-        //dbHelper.fillStoreRandomly();
-        //dbHelper.printFilledStore();
+        //dbHelper.dBinit();
+        dbHelper.getConnection();
+        dbHelper.createCategoryTable();
+        dbHelper.createProductTable();
+        dbHelper.fillStoreRandomly();
+        dbHelper.printFilledStore();
         //dbHelper.dropAllTables();
         //dbHelper.clearData();
 
