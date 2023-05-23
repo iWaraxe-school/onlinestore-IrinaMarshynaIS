@@ -18,7 +18,7 @@ import java.util.Map;
 
 public class XMLParser {
 
-    public static Map<SortCategory, SortType> configMap() {
+    public static Map<String, String> configMap() {
         Map<SortCategory, SortType> config = new LinkedHashMap<>();
         String filename = "C:\\Users\\irinamarshyna\\IdeaProjects\\onlinestore-IrinaMarshynaIS\\store\\src\\main\\resources\\config.xml";
 

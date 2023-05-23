@@ -19,6 +19,7 @@ public class Product {
         return name;
     }
 
+
     public Double getPrice() {
         return price;
     }
@@ -33,5 +34,14 @@ public class Product {
         return productInfo;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+    public void setRate(Double rate) {
+        this.rate = rate;
+    }
 }
 
