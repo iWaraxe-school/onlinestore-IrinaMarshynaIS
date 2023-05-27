@@ -18,7 +18,7 @@ public class Client {
         this.store = store;
     }
 
-    public static void clientMakesOrder() throws SQLException {
+    public void clientMakesOrder() throws SQLException {
         Product orderedProduct = DBHelper.getRandomProduct();
         Gson g = new Gson();
         String productInJson = g.toJson(orderedProduct);
@@ -31,6 +31,8 @@ public class Client {
 
         Response response = request.post("/order");
         System.out.println("The status received" + response.statusLine());
+        System.out.println("Response status code:" + response.getStatusCode());
         System.out.println("Response body:" + response.getBody().asString());
+
     }
 }

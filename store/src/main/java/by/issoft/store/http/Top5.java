@@ -12,7 +12,7 @@ public class Top5 implements HttpHandler {
         try {
             ResponseHandler.handleResponse(exchange, "List of Top5 products: \n\n" + DBHelper.getTop5Http());
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Error in Top5 class!!!", e);
         }
     }
 }

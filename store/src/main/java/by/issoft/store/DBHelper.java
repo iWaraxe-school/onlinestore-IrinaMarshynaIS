@@ -2,6 +2,8 @@ package by.issoft.store;
 
 import by.issoft.domain.Category;
 import by.issoft.domain.Product;
+import by.issoft.store.XML.SortingTypes.SortCategory;
+import by.issoft.store.XML.SortingTypes.SortType;
 import by.issoft.store.XML.XMLParser;
 
 
@@ -222,10 +224,10 @@ public class DBHelper {
     }
 
     public static String getSortedProducts() throws SQLException {
-        Map<String, String> allPropertiesToSort = XMLParser.configMap();
+        Map<SortCategory, SortType> allPropertiesToSort = XMLParser.configMap();
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("SELECT NAME, PRICE, RATE FROM PRODUCTS ORDER BY");
-        for (Map.Entry<String, String> entry : allPropertiesToSort.entrySet()) {
+        for (Map.Entry<SortCategory, SortType> entry : allPropertiesToSort.entrySet()) {
             String key = entry.getKey();
             String value = entry.getValue();
             stringBuilder.append("  ");

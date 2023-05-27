@@ -12,7 +12,7 @@ public class MainPage implements HttpHandler {
         try {
             ResponseHandler.handleResponse(exchange, "All available products in the store: \n\n" + DBHelper.getProductsWithCategories());
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Error in MainPage class!!!", e);
         }
     }
 }
