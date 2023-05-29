@@ -18,10 +18,10 @@ import java.util.Map;
 
 public class XMLParser {
 
+    static final String PATH = "\"C:\\\\Users\\\\irinamarshyna\\\\IdeaProjects\\\\onlinestore-IrinaMarshynaIS\\\\store\\\\src\\\\main\\\\resources\\\\config.xml\";\n";
     public static Map<SortCategory, SortType> configMap() {
         Map<SortCategory, SortType> config = new LinkedHashMap<>();
-        String filename = "C:\\Users\\irinamarshyna\\IdeaProjects\\onlinestore-IrinaMarshynaIS\\store\\src\\main\\resources\\config.xml";
-
+        String filename = PATH;
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder db = null;
         Document document = null;
