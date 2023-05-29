@@ -80,7 +80,7 @@ public class DBHelper {
                 "ID INT PRIMARY KEY AUTO_INCREMENT NOT NULL," +
                 "NAME VARCHAR(255) NOT NULL," +
                 "PRICE DECIMAL(10, 2) NOT NULL," +
-                "RATE DECIMAL(10, 1) NOT NULL,";
+                "RATE DECIMAL(10, 1) NOT NULL);";
         try (Connection connection = getConnection();
              Statement statement = connection.createStatement()) {
             statement.executeUpdate(query);
@@ -228,8 +228,8 @@ public class DBHelper {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("SELECT NAME, PRICE, RATE FROM PRODUCTS ORDER BY");
         for (Map.Entry<SortCategory, SortType> entry : allPropertiesToSort.entrySet()) {
-            String key = entry.getKey();
-            String value = entry.getValue();
+            String key = entry.getKey().toString();
+            String value = entry.getValue().toString();
             stringBuilder.append("  ");
             stringBuilder.append(key.toUpperCase());
             stringBuilder.append("  ");
