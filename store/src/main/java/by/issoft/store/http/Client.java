@@ -7,8 +7,6 @@ import com.google.gson.Gson;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
-
-
 import java.sql.SQLException;
 
 public class Client {
@@ -18,7 +16,7 @@ public class Client {
         this.store = store;
     }
 
-    public void clientMakesOrder() throws SQLException {
+    public static void clientMakesOrder() throws SQLException {
         Product orderedProduct = DBHelper.getRandomProduct();
         Gson g = new Gson();
         String productInJson = g.toJson(orderedProduct);

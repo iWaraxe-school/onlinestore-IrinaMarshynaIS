@@ -20,9 +20,10 @@ public class StoreApp {
         DBHelper dbHelper = new DBHelper(onlineStore);
         //dbHelper.dBinit();
         //dbHelper.getConnection();
-        //dbHelper.createCategoryTable();
-        //dbHelper.createProductTable();
-        //dbHelper.fillStoreRandomly();
+        dbHelper.createCategoryTable();
+        dbHelper.createProductTable();
+        dbHelper.fillStoreRandomly();
+        dbHelper.createOrdersTable();
         //dbHelper.printFilledStore();
         //dbHelper.dropAllTables();
         //dbHelper.clearData();
